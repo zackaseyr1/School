@@ -1,0 +1,16 @@
+<!-- create_school.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create School</title>
+</head>
+<body>
+    <h1>Create a New School</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

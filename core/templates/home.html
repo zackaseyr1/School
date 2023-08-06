@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Schools Management System {{user.username}}</h1>
+    <p>This is the home page of the system.</p>
+    
+    <h3><a href="{% url 'register_staff' %}">Register Staff</a></h3>
+    <h3><a href="{% url 'register_teacher' %}">Register Teacher Profile</a></h3>
+    <h3><a href="{% url 'register_student' %}">Register Student Profile</a></h3>
+
+    {% if school_profile %}
+        <h2>School Profile:</h2>
+        <p>Name: {{ school_profile.name }}</p>
+        <p>Administrator: {{ school_profile.administrator_name }}</p>
+        <p>Location: {{ school_profile.location }}</p>
+    {% else %}
+        <h2>No School Profile Available</h2>
+        <p><a href="{% url 'create_school' %}">Create School Profile</a></p>
+    {% endif %}
+
+    <h2>Teacher Profiles:</h2>
+    {% for teacher_profile in teacher_profiles %}
+        <p>{{ teacher_profile.full_name }}</p>
+    {% empty %}
+        <p>No teacher profiles available.</p>
+    {% endfor %}
+
+    <h2>Student Profiles:</h2>
+    {% for student_profile in student_profiles %}
+        <p>{{ student_profile.full_name }}</p>
+    {% empty %}
+        <p>No student profiles available.</p>
+    {% endfor %}
+
+    <h2>Staff Profiles:</h2>
+    {% for staff_profile in staff_profiles %}
+        <p>{{ staff_profile.full_name }}</p>
+    {% empty %}
+        <p>No staff profiles available.</p>
+    {% endfor %}
+</body>
+</html>
